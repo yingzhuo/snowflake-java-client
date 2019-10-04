@@ -12,18 +12,29 @@ package com.github.yingzhuo.snowflake;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.util.Assert;
+
+import java.io.Serializable;
 
 /**
  * @author 应卓
  */
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "spring.snowflake")
-public class Props {
+@ConfigurationProperties(prefix = "snowflake")
+public class Props implements Serializable, InitializingBean {
 
+    private boolean enabled = true;
     private Type type = Type.PROTOBUF;
     private String hostname = "localhost";
     private int port = 8080;
+
+    @Override
+    public void afterPropertiesSet() {
+        Assert.hasText(hostname, "snowflake.hostname is null or empty.");
+        Assert.notNull(type, "snowflake.type is null.");
+    }
 
 }
