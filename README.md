@@ -6,7 +6,7 @@ maven依赖:
 <dependency>
     <groupId>com.github.yingzhuo</groupId>
     <artifactId>snowflake-java-client</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
