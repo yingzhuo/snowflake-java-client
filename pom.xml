@@ -57,7 +57,7 @@
         <java.version>1.8</java.version>
         <springboot.version>2.1.11.RELEASE</springboot.version>
         <spring.version>5.1.12.RELEASE</spring.version>
-        <jackson.version>2.9.10</jackson.version>
+        <jackson.version>2.10.1</jackson.version>
         <slf4j.version>1.7.29</slf4j.version>
     </properties>
 
