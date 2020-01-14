@@ -12,6 +12,7 @@ package com.github.yingzhuo.snowflake.autoconfig;
 
 import com.github.yingzhuo.snowflake.Props;
 import com.github.yingzhuo.snowflake.SnowflakeUtils;
+import com.github.yingzhuo.snowflake.actuator.SnowflakeHealthIndicator;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,11 @@ public class SnowflakeAutoConfig {
     @Bean
     public SnowflakeUtils.SnowflakeUtilsBean snowflakeUtilsBean() {
         return new SnowflakeUtils.SnowflakeUtilsBean();
+    }
+
+    @Bean
+    public SnowflakeHealthIndicator snowflakeHealthIndicator() {
+        return new SnowflakeHealthIndicator();
     }
 
 }
