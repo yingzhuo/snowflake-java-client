@@ -10,24 +10,21 @@
 */
 package com.github.yingzhuo.snowflake.autoconfig;
 
-import com.github.yingzhuo.snowflake.Props;
-import com.github.yingzhuo.snowflake.SnowflakeUtils;
+import com.github.yingzhuo.snowflake.actuator.SnowflakeHealthIndicator;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Lazy;
 
 /**
  * @author 应卓
  */
-@EnableConfigurationProperties(Props.class)
+@ConditionalOnClass(name = "org.springframework.boot.actuate.endpoint.annotation.Endpoint")
 @ConditionalOnProperty(prefix = "snowflake", name = "enabled", havingValue = "true", matchIfMissing = true)
-public class SnowflakeAutoConfig {
+public class SnowflakeActuatorAutoConfig {
 
     @Bean
-    @Lazy(value = false)
-    public SnowflakeUtils snowflakeUtils() {
-        return SnowflakeUtils.INSTANCE;
+    public SnowflakeHealthIndicator snowflakeHealthIndicator() {
+        return new SnowflakeHealthIndicator();
     }
 
 }
