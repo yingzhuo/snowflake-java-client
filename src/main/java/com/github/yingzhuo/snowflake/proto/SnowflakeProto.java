@@ -14,6 +14,33 @@
 package com.github.yingzhuo.snowflake.proto;
 
 public final class SnowflakeProto {
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_snowflake_IdList_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_snowflake_IdList_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
+
+    static {
+        java.lang.String[] descriptorData = {
+                "\n\017snowflake.proto\022\tsnowflake\"\025\n\006IdList\022\013" +
+                        "\n\003ids\030\001 \003(\003BS\n#com.github.yingzhuo.snowf" +
+                        "lake.protoB\016SnowflakeProtoZ\034github.com/y" +
+                        "ingzhuo/protobufb\006proto3"
+        };
+        descriptor = com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                        });
+        internal_static_snowflake_IdList_descriptor =
+                getDescriptor().getMessageTypes().get(0);
+        internal_static_snowflake_IdList_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_snowflake_IdList_descriptor,
+                new java.lang.String[]{"Ids",});
+    }
+
     private SnowflakeProto() {
     }
 
@@ -25,6 +52,11 @@ public final class SnowflakeProto {
             com.google.protobuf.ExtensionRegistry registry) {
         registerAllExtensions(
                 (com.google.protobuf.ExtensionRegistryLite) registry);
+    }
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
     }
 
     public interface IdListOrBuilder extends
@@ -54,28 +86,35 @@ public final class SnowflakeProto {
             com.google.protobuf.GeneratedMessageV3 implements
             // @@protoc_insertion_point(message_implements:snowflake.IdList)
             IdListOrBuilder {
+        public static final int IDS_FIELD_NUMBER = 1;
         private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:snowflake.IdList)
+        private static final com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<IdList>
+                PARSER = new com.google.protobuf.AbstractParser<IdList>() {
+            @java.lang.Override
+            public IdList parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new IdList(input, extensionRegistry);
+            }
+        };
+
+        static {
+            DEFAULT_INSTANCE = new com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList();
+        }
+
+        private com.google.protobuf.Internal.LongList ids_;
+        private int idsMemoizedSerializedSize = -1;
+        private byte memoizedIsInitialized = -1;
 
         // Use IdList.newBuilder() to construct.
         private IdList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-
         private IdList() {
             ids_ = emptyLongList();
-        }
-
-        @java.lang.Override
-        @SuppressWarnings({"unused"})
-        protected java.lang.Object newInstance(
-                UnusedPrivateParameter unused) {
-            return new IdList();
-        }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-            return this.unknownFields;
         }
 
         private IdList(
@@ -144,124 +183,6 @@ public final class SnowflakeProto {
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
             return com.github.yingzhuo.snowflake.proto.SnowflakeProto.internal_static_snowflake_IdList_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return com.github.yingzhuo.snowflake.proto.SnowflakeProto.internal_static_snowflake_IdList_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.class, com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.Builder.class);
-        }
-
-        public static final int IDS_FIELD_NUMBER = 1;
-        private com.google.protobuf.Internal.LongList ids_;
-
-        /**
-         * <code>repeated int64 ids = 1;</code>
-         */
-        public java.util.List<java.lang.Long>
-        getIdsList() {
-            return ids_;
-        }
-
-        /**
-         * <code>repeated int64 ids = 1;</code>
-         */
-        public int getIdsCount() {
-            return ids_.size();
-        }
-
-        /**
-         * <code>repeated int64 ids = 1;</code>
-         */
-        public long getIds(int index) {
-            return ids_.getLong(index);
-        }
-
-        private int idsMemoizedSerializedSize = -1;
-
-        private byte memoizedIsInitialized = -1;
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
-
-            memoizedIsInitialized = 1;
-            return true;
-        }
-
-        @java.lang.Override
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            getSerializedSize();
-            if (getIdsList().size() > 0) {
-                output.writeUInt32NoTag(10);
-                output.writeUInt32NoTag(idsMemoizedSerializedSize);
-            }
-            for (int i = 0; i < ids_.size(); i++) {
-                output.writeInt64NoTag(ids_.getLong(i));
-            }
-            unknownFields.writeTo(output);
-        }
-
-        @java.lang.Override
-        public int getSerializedSize() {
-            int size = memoizedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            {
-                int dataSize = 0;
-                for (int i = 0; i < ids_.size(); i++) {
-                    dataSize += com.google.protobuf.CodedOutputStream
-                            .computeInt64SizeNoTag(ids_.getLong(i));
-                }
-                size += dataSize;
-                if (!getIdsList().isEmpty()) {
-                    size += 1;
-                    size += com.google.protobuf.CodedOutputStream
-                            .computeInt32SizeNoTag(dataSize);
-                }
-                idsMemoizedSerializedSize = dataSize;
-            }
-            size += unknownFields.getSerializedSize();
-            memoizedSize = size;
-            return size;
-        }
-
-        @java.lang.Override
-        public boolean equals(final java.lang.Object obj) {
-            if (obj == this) {
-                return true;
-            }
-            if (!(obj instanceof com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList)) {
-                return super.equals(obj);
-            }
-            com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList other = (com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList) obj;
-
-            if (!getIdsList()
-                    .equals(other.getIdsList())) return false;
-            if (!unknownFields.equals(other.unknownFields)) return false;
-            return true;
-        }
-
-        @java.lang.Override
-        public int hashCode() {
-            if (memoizedHashCode != 0) {
-                return memoizedHashCode;
-            }
-            int hash = 41;
-            hash = (19 * hash) + getDescriptor().hashCode();
-            if (getIdsCount() > 0) {
-                hash = (37 * hash) + IDS_FIELD_NUMBER;
-                hash = (53 * hash) + getIdsList().hashCode();
-            }
-            hash = (29 * hash) + unknownFields.hashCode();
-            memoizedHashCode = hash;
-            return hash;
         }
 
         public static com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList parseFrom(
@@ -345,17 +266,149 @@ public final class SnowflakeProto {
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        @java.lang.Override
-        public Builder newBuilderForType() {
-            return newBuilder();
-        }
-
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
 
         public static Builder newBuilder(com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<IdList> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new IdList();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.github.yingzhuo.snowflake.proto.SnowflakeProto.internal_static_snowflake_IdList_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.class, com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.Builder.class);
+        }
+
+        /**
+         * <code>repeated int64 ids = 1;</code>
+         */
+        public java.util.List<java.lang.Long>
+        getIdsList() {
+            return ids_;
+        }
+
+        /**
+         * <code>repeated int64 ids = 1;</code>
+         */
+        public int getIdsCount() {
+            return ids_.size();
+        }
+
+        /**
+         * <code>repeated int64 ids = 1;</code>
+         */
+        public long getIds(int index) {
+            return ids_.getLong(index);
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (getIdsList().size() > 0) {
+                output.writeUInt32NoTag(10);
+                output.writeUInt32NoTag(idsMemoizedSerializedSize);
+            }
+            for (int i = 0; i < ids_.size(); i++) {
+                output.writeInt64NoTag(ids_.getLong(i));
+            }
+            unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            {
+                int dataSize = 0;
+                for (int i = 0; i < ids_.size(); i++) {
+                    dataSize += com.google.protobuf.CodedOutputStream
+                            .computeInt64SizeNoTag(ids_.getLong(i));
+                }
+                size += dataSize;
+                if (!getIdsList().isEmpty()) {
+                    size += 1;
+                    size += com.google.protobuf.CodedOutputStream
+                            .computeInt32SizeNoTag(dataSize);
+                }
+                idsMemoizedSerializedSize = dataSize;
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList)) {
+                return super.equals(obj);
+            }
+            com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList other = (com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList) obj;
+
+            if (!getIdsList()
+                    .equals(other.getIdsList())) return false;
+            if (!unknownFields.equals(other.unknownFields)) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (getIdsCount() > 0) {
+                hash = (37 * hash) + IDS_FIELD_NUMBER;
+                hash = (53 * hash) + getIdsList().hashCode();
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
         }
 
         @java.lang.Override
@@ -371,6 +424,16 @@ public final class SnowflakeProto {
             return builder;
         }
 
+        @java.lang.Override
+        public com.google.protobuf.Parser<IdList> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
         /**
          * Protobuf type {@code snowflake.IdList}
          */
@@ -378,6 +441,20 @@ public final class SnowflakeProto {
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
                 // @@protoc_insertion_point(builder_implements:snowflake.IdList)
                 com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdListOrBuilder {
+            private int bitField0_;
+            private com.google.protobuf.Internal.LongList ids_ = emptyLongList();
+
+            // Construct using com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
                 return com.github.yingzhuo.snowflake.proto.SnowflakeProto.internal_static_snowflake_IdList_descriptor;
@@ -389,17 +466,6 @@ public final class SnowflakeProto {
                 return com.github.yingzhuo.snowflake.proto.SnowflakeProto.internal_static_snowflake_IdList_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
                                 com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.class, com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.Builder.class);
-            }
-
-            // Construct using com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
             }
 
             private void maybeForceBuilderInitialization() {
@@ -539,10 +605,6 @@ public final class SnowflakeProto {
                 return this;
             }
 
-            private int bitField0_;
-
-            private com.google.protobuf.Internal.LongList ids_ = emptyLongList();
-
             private void ensureIdsIsMutable() {
                 if (!((bitField0_ & 0x00000001) != 0)) {
                     ids_ = mutableCopy(ids_);
@@ -632,75 +694,6 @@ public final class SnowflakeProto {
             // @@protoc_insertion_point(builder_scope:snowflake.IdList)
         }
 
-        // @@protoc_insertion_point(class_scope:snowflake.IdList)
-        private static final com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList DEFAULT_INSTANCE;
-
-        static {
-            DEFAULT_INSTANCE = new com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList();
-        }
-
-        public static com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList getDefaultInstance() {
-            return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<IdList>
-                PARSER = new com.google.protobuf.AbstractParser<IdList>() {
-            @java.lang.Override
-            public IdList parsePartialFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return new IdList(input, extensionRegistry);
-            }
-        };
-
-        public static com.google.protobuf.Parser<IdList> parser() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<IdList> getParserForType() {
-            return PARSER;
-        }
-
-        @java.lang.Override
-        public com.github.yingzhuo.snowflake.proto.SnowflakeProto.IdList getDefaultInstanceForType() {
-            return DEFAULT_INSTANCE;
-        }
-
-    }
-
-    private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_snowflake_IdList_descriptor;
-    private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_snowflake_IdList_fieldAccessorTable;
-
-    public static com.google.protobuf.Descriptors.FileDescriptor
-    getDescriptor() {
-        return descriptor;
-    }
-
-    private static com.google.protobuf.Descriptors.FileDescriptor
-            descriptor;
-
-    static {
-        java.lang.String[] descriptorData = {
-                "\n\017snowflake.proto\022\tsnowflake\"\025\n\006IdList\022\013" +
-                        "\n\003ids\030\001 \003(\003BS\n#com.github.yingzhuo.snowf" +
-                        "lake.protoB\016SnowflakeProtoZ\034github.com/y" +
-                        "ingzhuo/protobufb\006proto3"
-        };
-        descriptor = com.google.protobuf.Descriptors.FileDescriptor
-                .internalBuildGeneratedFileFrom(descriptorData,
-                        new com.google.protobuf.Descriptors.FileDescriptor[]{
-                        });
-        internal_static_snowflake_IdList_descriptor =
-                getDescriptor().getMessageTypes().get(0);
-        internal_static_snowflake_IdList_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_snowflake_IdList_descriptor,
-                new java.lang.String[]{"Ids",});
     }
 
     // @@protoc_insertion_point(outer_class_scope)

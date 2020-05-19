@@ -22,8 +22,6 @@ import org.springframework.boot.actuate.health.Status;
  */
 public class SnowflakeHealthIndicator extends AbstractHealthIndicator implements HealthIndicator {
 
-    private static final String method_key = "snowflake";
-
     @Override
     protected void doHealthCheck(Health.Builder builder) {
         try {

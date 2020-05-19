@@ -34,6 +34,9 @@ public final class SnowflakeUtils implements ApplicationContextAware {
 
     static Props props;
 
+    private SnowflakeUtils() {
+    }
+
     public static long nextId() {
         return nextIds(1).get(0);
     }
@@ -64,10 +67,5 @@ public final class SnowflakeUtils implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         SnowflakeUtils.props
                 = applicationContext.getBean(Props.class);
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    private SnowflakeUtils() {
     }
 }
