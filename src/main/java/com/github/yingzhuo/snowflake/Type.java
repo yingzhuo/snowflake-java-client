@@ -15,6 +15,8 @@ package com.github.yingzhuo.snowflake;
  */
 public enum Type {
 
-    JSON, PROTOBUF
+    JSON,
+
+    PROTOBUF
 
 }

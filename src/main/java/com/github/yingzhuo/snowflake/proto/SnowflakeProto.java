@@ -113,6 +113,7 @@ public final class SnowflakeProto {
         private IdList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
+
         private IdList() {
             ids_ = emptyLongList();
         }
