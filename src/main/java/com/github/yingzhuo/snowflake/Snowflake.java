@@ -25,16 +25,16 @@ import java.util.List;
  * @author 应卓
  */
 @SuppressWarnings("unchecked")
-public final class SnowflakeUtils implements ApplicationContextAware {
+public final class Snowflake implements ApplicationContextAware {
 
-    public static final SnowflakeUtils INSTANCE = new SnowflakeUtils();
+    public static final Snowflake INSTANCE = new Snowflake();
 
     private static final RestTemplate JSON_REST_TEMPLATE = new RestTemplate(Collections.singletonList(new MappingJackson2HttpMessageConverter()));
     private static final RestTemplate PROTOBUF_REST_TEMPLATE = new RestTemplate(Collections.singletonList(new ProtobufJsonFormatHttpMessageConverter()));
 
     static Props props;
 
-    private SnowflakeUtils() {
+    private Snowflake() {
     }
 
     public static long nextId() {
@@ -65,7 +65,8 @@ public final class SnowflakeUtils implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SnowflakeUtils.props
+        Snowflake.props
                 = applicationContext.getBean(Props.class);
     }
+
 }

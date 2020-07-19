@@ -10,27 +10,27 @@
 */
 package com.github.yingzhuo.snowflake.actuator;
 
-import com.github.yingzhuo.snowflake.SnowflakeUtils;
+import com.github.yingzhuo.snowflake.Snowflake;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.boot.actuate.health.Status;
 
 /**
  * @author 应卓
  * @since 1.0.3
  */
-public class SnowflakeHealthIndicator extends AbstractHealthIndicator implements HealthIndicator {
+@Slf4j
+public class SnowflakeHealthIndicator extends AbstractHealthIndicator {
 
     @Override
     protected void doHealthCheck(Health.Builder builder) {
         try {
-            SnowflakeUtils.nextId();
-            builder.status(Status.UP)
-                    .withDetail("snowflake", "Available");
+            Snowflake.nextId();
+            builder.status(Status.UP);
         } catch (Exception e) {
-            builder.status(Status.DOWN)
-                    .withDetail("snowflake", "Not Available");
+            log.warn(e.getMessage(), e);
+            builder.status(Status.DOWN);
         }
     }
 

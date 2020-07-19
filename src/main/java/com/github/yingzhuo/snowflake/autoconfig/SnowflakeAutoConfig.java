@@ -11,11 +11,10 @@
 package com.github.yingzhuo.snowflake.autoconfig;
 
 import com.github.yingzhuo.snowflake.Props;
-import com.github.yingzhuo.snowflake.SnowflakeUtils;
+import com.github.yingzhuo.snowflake.Snowflake;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Lazy;
 
 /**
  * @author 应卓
@@ -25,9 +24,8 @@ import org.springframework.context.annotation.Lazy;
 public class SnowflakeAutoConfig {
 
     @Bean
-    @Lazy(value = false)
-    public SnowflakeUtils snowflakeUtils() {
-        return SnowflakeUtils.INSTANCE;
+    public Snowflake snowflakeUtils() {
+        return Snowflake.INSTANCE;
     }
 
 }

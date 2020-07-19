@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.yingzhuo</groupId>
     <artifactId>snowflake-java-client</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>jar</packaging>
 
     <name>snowflake-java-client</name>
@@ -57,7 +57,7 @@
         <java.version>1.8</java.version>
         <springboot.version>2.3.1.RELEASE</springboot.version>
         <spring.version>5.2.7.RELEASE</spring.version>
-        <jackson.version>2.11.0</jackson.version>
+        <jackson.version>2.11.1</jackson.version>
         <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
@@ -283,12 +283,12 @@
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java</artifactId>
-                <version>3.11.4</version>
+                <version>3.12.2</version>
             </dependency>
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java-util</artifactId>
-                <version>3.11.4</version>
+                <version>3.12.2</version>
             </dependency>
             <dependency>
                 <groupId>com.googlecode.protobuf-java-format</groupId>
@@ -429,7 +429,7 @@
         <profile>
             <id>sonar</id>
             <activation>
-                <jdk>[1.8,)</jdk>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <build>
                 <plugins>

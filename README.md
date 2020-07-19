@@ -6,7 +6,7 @@ maven依赖:
 <dependency>
     <groupId>com.github.yingzhuo</groupId>
     <artifactId>snowflake-java-client</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 </dependency>
 ```
 
@@ -16,7 +16,7 @@ maven依赖:
 snowflake:
   response-type: json
   hostname: "localhost"
-  port: 18080
+  port: 8080
 ```
 
-直接使用`com.github.yingzhuo.snowflake.SnowflakeUtils`即可。
+直接使用`com.github.yingzhuo.snowflake.Snowflake`即可。

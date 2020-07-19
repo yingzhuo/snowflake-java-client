@@ -16,15 +16,13 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.Assert;
 
-import java.io.Serializable;
-
 /**
  * @author 应卓
  */
 @Getter
 @Setter
 @ConfigurationProperties(prefix = "snowflake")
-public class Props implements Serializable, InitializingBean {
+public class Props implements InitializingBean {
 
     private boolean enabled = true;
     private Type type = Type.PROTOBUF;
