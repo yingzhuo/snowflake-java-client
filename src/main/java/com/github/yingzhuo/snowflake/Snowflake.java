@@ -32,7 +32,7 @@ public final class Snowflake implements ApplicationContextAware {
     private static final RestTemplate JSON_REST_TEMPLATE = new RestTemplate(Collections.singletonList(new MappingJackson2HttpMessageConverter()));
     private static final RestTemplate PROTOBUF_REST_TEMPLATE = new RestTemplate(Collections.singletonList(new ProtobufJsonFormatHttpMessageConverter()));
 
-    static Props props;
+    private static SnowflakeProperties props;
 
     private Snowflake() {
     }
@@ -53,20 +53,19 @@ public final class Snowflake implements ApplicationContextAware {
     }
 
     private static List<Long> doNextJsonIds(int n) {
-        final String url = String.format("http://%s:%d/id?n={n}", props.getHostname(), props.getPort());
+        final String url = String.format("http://%s/id?n={n}", props.getHost());
         return JSON_REST_TEMPLATE.getForEntity(url, List.class, n).getBody();
     }
 
     private static List<Long> doNextProtobufIds(int n) {
-        final String url = String.format("http://%s:%d/id?n={n}", props.getHostname(), props.getPort());
+        final String url = String.format("http://%s/id?n={n}", props.getHost());
         final SnowflakeProto.IdList idList = PROTOBUF_REST_TEMPLATE.getForEntity(url, SnowflakeProto.IdList.class, n).getBody();
         return idList.getIdsList();
     }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        Snowflake.props
-                = applicationContext.getBean(Props.class);
+        Snowflake.props = applicationContext.getBean(SnowflakeProperties.class);
     }
 
 }

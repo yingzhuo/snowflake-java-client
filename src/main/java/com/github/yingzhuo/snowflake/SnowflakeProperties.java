@@ -22,16 +22,18 @@ import org.springframework.util.Assert;
 @Getter
 @Setter
 @ConfigurationProperties(prefix = "snowflake")
-public class Props implements InitializingBean {
+public class SnowflakeProperties implements InitializingBean {
 
     private boolean enabled = true;
     private Type type = Type.PROTOBUF;
-    private String hostname = "localhost";
-    private int port = 8080;
+    private String host = "localhost:8080";
 
     @Override
     public void afterPropertiesSet() {
-        Assert.hasText(hostname, "snowflake.hostname is null or empty.");
+        if (host != null) {
+            host = host.trim();
+        }
+        Assert.hasText(host, "snowflake.hostname is null or empty.");
         Assert.notNull(type, "snowflake.type is null.");
     }
 

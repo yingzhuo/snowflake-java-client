@@ -10,7 +10,7 @@
 */
 package com.github.yingzhuo.snowflake.autoconfig;
 
-import com.github.yingzhuo.snowflake.Props;
+import com.github.yingzhuo.snowflake.SnowflakeProperties;
 import com.github.yingzhuo.snowflake.Snowflake;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Bean;
 /**
  * @author 应卓
  */
-@EnableConfigurationProperties(Props.class)
+@EnableConfigurationProperties(SnowflakeProperties.class)
 @ConditionalOnProperty(prefix = "snowflake", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class SnowflakeAutoConfig {
 
