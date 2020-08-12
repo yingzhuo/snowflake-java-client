@@ -25,7 +25,6 @@ import org.springframework.util.Assert;
 public class SnowflakeProperties implements InitializingBean {
 
     private boolean enabled = true;
-    private Type type = Type.PROTOBUF;
     private String host = "localhost:8080";
 
     @Override
@@ -34,7 +33,6 @@ public class SnowflakeProperties implements InitializingBean {
             host = host.trim();
         }
         Assert.hasText(host, "snowflake.hostname is null or empty.");
-        Assert.notNull(type, "snowflake.type is null.");
     }
 
 }

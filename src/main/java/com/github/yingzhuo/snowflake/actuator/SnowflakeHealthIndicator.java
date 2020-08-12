@@ -11,7 +11,6 @@
 package com.github.yingzhuo.snowflake.actuator;
 
 import com.github.yingzhuo.snowflake.Snowflake;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.Status;
@@ -20,7 +19,6 @@ import org.springframework.boot.actuate.health.Status;
  * @author 应卓
  * @since 1.0.3
  */
-@Slf4j
 public class SnowflakeHealthIndicator extends AbstractHealthIndicator {
 
     @Override
@@ -29,7 +27,6 @@ public class SnowflakeHealthIndicator extends AbstractHealthIndicator {
             Snowflake.nextId();
             builder.status(Status.UP);
         } catch (Exception e) {
-            log.warn(e.getMessage(), e);
             builder.status(Status.DOWN);
         }
     }

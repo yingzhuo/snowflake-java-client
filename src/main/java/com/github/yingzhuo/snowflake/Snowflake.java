@@ -10,12 +10,10 @@
 */
 package com.github.yingzhuo.snowflake;
 
-import com.github.yingzhuo.snowflake.proto.SnowflakeProto;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.protobuf.ProtobufJsonFormatHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -28,9 +26,7 @@ import java.util.List;
 public final class Snowflake implements ApplicationContextAware {
 
     public static final Snowflake INSTANCE = new Snowflake();
-
     private static final RestTemplate JSON_REST_TEMPLATE = new RestTemplate(Collections.singletonList(new MappingJackson2HttpMessageConverter()));
-    private static final RestTemplate PROTOBUF_REST_TEMPLATE = new RestTemplate(Collections.singletonList(new ProtobufJsonFormatHttpMessageConverter()));
 
     private static SnowflakeProperties props;
 
@@ -42,25 +38,8 @@ public final class Snowflake implements ApplicationContextAware {
     }
 
     public static List<Long> nextIds(int n) {
-        switch (props.getType()) {
-            case PROTOBUF:
-                return doNextProtobufIds(n);
-            case JSON:
-                return doNextJsonIds(n);
-            default:
-                throw new AssertionError();
-        }
-    }
-
-    private static List<Long> doNextJsonIds(int n) {
         final String url = String.format("http://%s/id?n={n}", props.getHost());
         return JSON_REST_TEMPLATE.getForEntity(url, List.class, n).getBody();
-    }
-
-    private static List<Long> doNextProtobufIds(int n) {
-        final String url = String.format("http://%s/id?n={n}", props.getHost());
-        final SnowflakeProto.IdList idList = PROTOBUF_REST_TEMPLATE.getForEntity(url, SnowflakeProto.IdList.class, n).getBody();
-        return idList.getIdsList();
     }
 
     @Override

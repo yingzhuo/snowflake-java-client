@@ -10,8 +10,8 @@
 */
 package com.github.yingzhuo.snowflake.autoconfig;
 
-import com.github.yingzhuo.snowflake.SnowflakeProperties;
 import com.github.yingzhuo.snowflake.Snowflake;
+import com.github.yingzhuo.snowflake.SnowflakeProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
