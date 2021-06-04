@@ -16,13 +16,14 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * @author 应卓
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked", "rawtypes"})
 public final class Snowflake implements ApplicationContextAware {
 
     public static final Snowflake INSTANCE = new Snowflake();
@@ -40,6 +41,54 @@ public final class Snowflake implements ApplicationContextAware {
     public static List<Long> nextIds(int n) {
         final String url = String.format("http://%s/id?n={n}", props.getHost());
         return JSON_REST_TEMPLATE.getForEntity(url, List.class, n).getBody();
+    }
+
+    public static void setId(List collection) {
+        if (collection == null || collection.isEmpty()) {
+            return;
+        }
+
+        List<Long> ids = nextIds(collection.size());
+
+        for (int i = 0; i < ids.size(); i++) {
+            Object obj = collection.get(i);
+
+            if (obj == null) continue;
+
+            if (obj instanceof SnowflakeIdable) {
+                ((SnowflakeIdable) obj).setId(ids.get(i));
+                continue;
+            }
+
+            setIdForObjQuietly(obj, ids.get(i));
+        }
+
+    }
+
+    private static void setIdForObjQuietly(Object obj, Long snowflake) {
+
+        Method method = null;
+
+        try {
+            method = obj.getClass().getMethod("setId", Long.class);
+        } catch (NoSuchMethodException e) {
+            try {
+                method = obj.getClass().getMethod("setId", long.class);
+            } catch (NoSuchMethodException ex) {
+                // NOP
+            }
+        } catch (Exception ignore) {
+            // NOP
+        }
+
+        if (method != null) {
+            try {
+                method.setAccessible(true);
+                method.invoke(obj, snowflake);
+            } catch (Exception e) {
+                // NOP
+            }
+        }
     }
 
     @Override
